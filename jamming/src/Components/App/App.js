@@ -20,18 +20,48 @@ export class App extends React.Component {
         album: "Example Track Album 2",
         id: 2,
       },
+    ],
 
-    ]};
+    playlistName: "Example Playlist",
+    playlistTracks: [
+      {
+        name: "Example Playlist Name",
+        artist: "Example Playlist Artist",
+        album: "Example Playlist Album",
+        id: 3,
+      },
+      {
+        name: "Example Playlist Name2",
+        artist: "Example Playlist Artist2",
+        album: "Example Playlist Album2",
+        id: 4,
+      },
+    ]
+  };
+  this.addTrack = this.addTrack.bind(this);
   }; 
-    render() {
+
+  addTrack(track) {
+    const foundTrack = this.state.playlistTracks.find(
+      (playlistTrack) => playlistTrack.id === track.id);
+
+    const newTrack = this.state.playlistTracks.concat(track);
+    if (foundTrack) {
+      console.log("Track already Exists")
+    } else {
+      this.setState({ playlistTracks: newTrack })
+    }
+  }
+    
+  render() {
     return (
     <div>
       <h1>Ja<span className="highlight">mmm</span>ing</h1>
       <div className="App">
         <SearchBar />
         <div className="App-playlist">
-          <SearchResults searchResults={this.state.searchResults} /> 
-          <PlayList />
+          <SearchResults searchResults={this.state.searchResults} onAdd={this.addTrack}/> 
+          <PlayList playlistName={this.state.playlistName} playlistTracks={this.state.playlistTracks}/>
         </div>
       </div>
     </div>

@@ -1,6 +1,7 @@
 import React from "react";
 import "./SearchBar.css"
 
+// Adding search bar function
 export class SearchBar extends React.Component {
 
     constructor (props) {

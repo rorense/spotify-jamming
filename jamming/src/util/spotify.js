@@ -39,11 +39,28 @@ const Spotify = {
                 name: tracks.name,
                 artist: tracks.artists[0].name,
                 album: tracks.album.name,
-                uri: tracks.uri
+                uri: tracks.uri,
+            }));
+        });
+    },
 
-            }))
-        }) 
-    }
+    savePlaylistName(name, trackURIs) {
+        if (name || trackURIs) {
+            return;
+        }
+        let accessToken = Spotify.getAccessToken();
+        const headers = { Authorization: `Bearer ${accessToken}` };
+        let userID = "";
+        return fetch("https://api.spotify.com/v1/me", {
+            headers: headers,
+        })
+        .then((response) => response.json())
+        .then((jsonResponse) => {
+            userID = jsonResponse.id;
+            return fetch()
+        })
+    } 
+
 
 }
 export {Spotify}

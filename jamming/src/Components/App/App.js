@@ -76,9 +76,9 @@ export class App extends React.Component {
     Spotify.search(term)
       .then(result => {
         this.setState({ searchResults: result });
-        // console.log(term);
+        console.log(term);
       })
-  }
+  } 
     
   render() {
     return (

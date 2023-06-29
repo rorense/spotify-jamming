@@ -41,9 +41,9 @@ export class App extends React.Component {
   };
   this.addTrack = this.addTrack.bind(this);
   this.removeTrack = this.removeTrack.bind(this);
-  this.updatePlaylistName = this.updatePlaylistName(this);
-  this.savePlaylist = this.savePlaylist(this);
-  this.search = this.search(this);
+  this.updatePlaylistName = this.updatePlaylistName.bind(this);
+  this.savePlaylist = this.savePlaylist.bind(this);
+  this.search = this.search.bind(this);
   }; 
 
   addTrack(track) {
@@ -65,7 +65,7 @@ export class App extends React.Component {
   }
 
   updatePlaylistName(name) {
-    this.setState({ playlistName: name })
+    this.setState({ playlistName: name });
   }
 
   savePlaylist() {
@@ -81,7 +81,7 @@ export class App extends React.Component {
 
   search (term) {
     Spotify.search(term)
-      .then(result => {
+      .then((result) => {
         this.setState({ searchResults: result });
         console.log(term);
       })

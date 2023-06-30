@@ -1,3 +1,5 @@
+/* eslint-disable no-lone-blocks */
+// Importing necesary files and extensions required for the app to work.
 import React from 'react';
 import './App.css';
 import { SearchBar } from '../SearchBar/SearchBar';
@@ -5,10 +7,18 @@ import { SearchResults } from '../SearchResults/SearchResults';
 import { PlayList } from '../PlayList/PlayList';
 import { Spotify } from '../../util/spotify';
 
+// The main App component which will fit the other crucial components.
 export class App extends React.Component {
+  
+
   constructor(props) {
-    super(props);
+    {/* Initial values of the tracklist components for testing purposes. 
+    In order to use the "this." prperty, we have to use super(prop) which is passed down from the
+    React component class.
+    */}
+   super(props);
     this.state = {searchResults: [
+      // These are purely for testing purposes.
       {
         name: "Example Track Name",
         artist: "Example Track Artist",
@@ -39,6 +49,11 @@ export class App extends React.Component {
       },
     ]
   };
+
+  {/*Binding methods in constructor allows for binding the context to event handlers
+  so it does not lose context.
+  Binding can also be done using arrow functions in the method definition or 
+  in the render statement.*/}
   this.addTrack = this.addTrack.bind(this);
   this.removeTrack = this.removeTrack.bind(this);
   this.updatePlaylistName = this.updatePlaylistName.bind(this);
@@ -46,10 +61,13 @@ export class App extends React.Component {
   this.search = this.search.bind(this);
   }; 
 
+  // Method to add tracks to the playlist.
   addTrack(track) {
+    // foundTrack variable determines whether the targetted track already exists in the playlist.
     const foundTrack = this.state.playlistTracks.find(
       (playlistTrack) => playlistTrack.id === track.id);
-
+    
+    // using concat() function to merge the track with existing playlist
     const newTrack = this.state.playlistTracks.concat(track);
     if (foundTrack) {
       console.log("Track already Exists")
@@ -58,9 +76,10 @@ export class App extends React.Component {
     }
   }
 
+  // Method to remove track from the playlist
   removeTrack(track) {
    const isPresent = this.state.playlistTracks.filter((playlistTrack) => playlistTrack.id !== track.id);
-   this.setState({ playlistTracks: isPresent});
+   this.setState({ playlistTracks: isPresent });
 
   }
 

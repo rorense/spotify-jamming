@@ -67,7 +67,7 @@ export class App extends React.Component {
     const foundTrack = this.state.playlistTracks.find(
       (playlistTrack) => playlistTrack.id === track.id);
     
-    // using concat() function to merge the track with existing playlist
+    // using concat() function to merge the track with existing playlist. Can also use push().
     const newTrack = this.state.playlistTracks.concat(track);
     if (foundTrack) {
       console.log("Track already Exists")

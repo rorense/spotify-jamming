@@ -10,7 +10,6 @@ import { Spotify } from '../../util/spotify';
 /* The main App component which will fit the other crucial components.
 Exported to be used in other files */
 export class App extends React.Component {
-  
 
   constructor(props) {
     /* Initial values of the tracklist components for testing purposes. 

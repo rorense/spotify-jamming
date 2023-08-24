@@ -1,6 +1,6 @@
 let accessToken = "";
-const clientID = "0d8fe520136844b4aaf6fa9e4ebf8877";
-const redirectURI = "http://localhost:3000/";
+const clientID = "9f98865ae8074569b8b31f5799c732b2";
+const redirectURI = "https://rorense.github.io/spotify-jamming/";
 
 // Required Spotify object for accessing APIs.
 const Spotify = {
